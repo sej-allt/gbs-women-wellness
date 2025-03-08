@@ -1,0 +1,85 @@
+.about-us-section {
+  display: flex;
+  flex-direction: row; /* Ensures left and right layout */
+  justify-content: space-between;
+  padding: 3rem 2rem;
+  background-color: #f9f9f9;
+  margin-top: 4rem; /* Increased space between slider and About Us */
+}
+
+.about-us-header h2 {
+  text-align: left; /* Align heading to the left */
+  font-size: 3rem; /* Increased font size for better visibility */
+  margin-bottom: 2rem; /* Increased margin to separate the heading from content */
+  font-weight: bold; /* Added boldness to the heading */
+  color: #333; /* Darker color for better contrast */
+}
+
+.about-us-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.about-us-text {
+  width: 60%; /* Text will take 60% width */
+  padding-right: 2rem;
+  text-align: left; /* Align the content to the left */
+}
+
+.tabs {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab-text {
+  font-size: 1.2rem;
+  color: #ff69b4;
+  cursor: pointer;
+}
+
+.tab-text.active {
+  font-weight: bold;
+}
+
+.learn-more-btn {
+  background-color: #ff69b4;
+  color: white;
+  padding: 0.7rem 1.5rem;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.learn-more-btn:hover {
+  background-color: #ff4081;
+}
+
+.about-us-image img {
+  width: 50%; /* Increased image width to 50% */
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 400px; /* Adjusted max height for better image scaling */
+}
+
+@media (max-width: 768px) {
+  .about-us-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-us-text {
+    width: 100%;
+    padding-right: 0;
+    text-align: center;
+  }
+
+  .about-us-image {
+    width: 100%;
+    margin-top: 2rem;
+  }
+}

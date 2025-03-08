@@ -1,0 +1,33 @@
+/* HeroSection.css */
+
+.hero-section {
+  position: relative;
+  width: 100%;
+}
+
+.hero-section .carousel-item {
+  height: 100vh; /* Full viewport height */
+  object-fit: cover;
+}
+
+.hero-section .carousel-caption {
+  bottom: 30%;
+  text-align: center;
+}
+
+.hero-section .carousel-caption h3 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .carousel-caption p {
+  font-size: 1.2rem;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.hero-section .carousel-item img {
+  filter: brightness(50%);
+}
