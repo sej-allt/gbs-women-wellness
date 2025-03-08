@@ -2,9 +2,13 @@
   "name": "server",
   "version": "1.0.0",
   "main": "index.js",
+<<<<<<< HEAD
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
+=======
+  "scripts": {
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -12,6 +16,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.1.1",
     "child_process": "^1.0.2",
     "cookie-parser": "^1.4.7",
@@ -24,5 +29,12 @@
     "nodemon": "^3.1.9",
     "otp-generator": "^4.0.1",
     "puppeteer": "^24.4.0"
+=======
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.12.1",
+    "nodemon": "^3.1.9"
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
   }
 }
