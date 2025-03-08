@@ -199,7 +199,6 @@ export const login = async (request, response) => {
       let payload = {
         user: email,
         id: user_details._id,
-        account_type: user_details.account_type,
       };
       console.log(payload);
       const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -214,6 +213,8 @@ export const login = async (request, response) => {
         expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000), //ms
         httpOnly: true,
       };
+
+      request.user = user_details;
 
       return response.cookie("token", token, options).status(200).json({
         success: true,
@@ -232,6 +233,76 @@ export const login = async (request, response) => {
     return response.status(500).json({
       success: false,
       message: " error while logging in",
+      error: error.message,
+    });
+  }
+};
+
+export const determineAndUpdateGoal = async (req, res) => {
+  try {
+    const { user, answers, age } = req.body;
+
+    const userId = user._id;
+
+    if (!userId || !answers || !Array.isArray(answers)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid request. userId and answers array are required.",
+      });
+    }
+
+    // Counting frequency of each option
+    const counts = answers.reduce((acc, option) => {
+      acc[option] = (acc[option] || 0) + 1;
+      return acc;
+    }, {});
+
+    // Finding the most selected option
+    const mainChoice = Object.keys(counts).reduce((a, b) =>
+      counts[a] > counts[b] ? a : b
+    );
+
+    // Mapping choice to goals
+    const goalMapping = {
+      a: "Health",
+      b: "Finance",
+      c: "Balanced Lifestyle",
+      d: "Impulsive Decisions",
+    };
+
+    const goal = goalMapping[mainChoice] || "Unknown";
+
+    // Update user model
+    const updatedUser = await User.findByIdAndUpdate(
+      userId,
+      { goal },
+      { new: true }
+    );
+
+    const updateAge = await Health.findOneAndUpdate(
+      { user_id: userId },
+      { age },
+      { new: true }
+    );
+
+    if (!updatedUser) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found.",
+      });
+    }
+    console.log("hello", updateAge);
+
+    return res.status(200).json({
+      success: true,
+      message: "User goal updated successfully.",
+      user: updatedUser,
+    });
+  } catch (error) {
+    console.error("Error updating goal:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error.",
       error: error.message,
     });
   }

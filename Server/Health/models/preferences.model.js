@@ -6,7 +6,8 @@ const preferencesSchema = new mongoose.Schema({
     required: true,
   },
   main_focus: {
-    type: String, // Health / Finance / Both
+    type: String,
+    //"weight loss or weight maintain"
     // required: true,
   },
   reminder_time: {

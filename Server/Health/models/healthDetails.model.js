@@ -36,6 +36,9 @@ const healthDetailsSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  menstrul_cycle: {
+    type: Number,
+  },
   journey_start_date: {
     type: Date,
   },

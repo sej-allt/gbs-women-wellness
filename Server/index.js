@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import authRoutes from "./Health/routes/Auth.js";
+import calendarRoutes from "./Health/routes/Calendar.js";
+import fitRoutes from "./Health/routes/Fitness.js";
 import connect from "./config/database.js";
 import { sendWhatsAppMessage } from "./utils/whatsapp_sender.js";
 dotenv.config({
@@ -22,7 +24,9 @@ const PORT = process.env.PORT || 4000;
 
 connect();
 
-app.use("/", authRoutes);
+app.use("/api/v1/auth", authRoutes);
+app.use("/api/v1/fit", fitRoutes);
+app.use("/api/v1/calendar", calendarRoutes);
 
 app.get("/", (req, res) => {
   return res.json({
