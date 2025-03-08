@@ -3,12 +3,16 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 import logo from "../assets/logo-placeholder.png";
+<<<<<<< HEAD
 import { login } from "../services/auth"; // Import login function
 import toast from "react-hot-toast";
+=======
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
 
 const LoginForm: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +29,17 @@ const LoginForm: React.FC = () => {
     setLoading(true);
     await login(formData.email, formData.password, navigate);
     setLoading(false);
+=======
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    // Add your login logic here; for now, navigate to dashboard
+    navigate("/dashboard");
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
   };
 
   return (
@@ -53,8 +68,13 @@ const LoginForm: React.FC = () => {
             required
             className="auth-input"
           />
+<<<<<<< HEAD
           <button type="submit" className="auth-button" disabled={loading}>
             {loading ? "Logging in..." : "Log In"}
+=======
+          <button type="submit" className="auth-button">
+            Log In
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
           </button>
         </form>
         <div className="auth-footer">

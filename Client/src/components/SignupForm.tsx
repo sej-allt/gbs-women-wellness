@@ -2,22 +2,34 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../styles/Auth.css";
 import logo from "../assets/logo-placeholder.png";
+<<<<<<< HEAD
 import { sendOtp, signup } from "../services/auth";
 
 const SignupForm: React.FC = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
+=======
+
+const SignupForm: React.FC = () => {
+  const [formData, setFormData] = useState({
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
     email: "",
     password: "",
     confirmPassword: "",
   });
+<<<<<<< HEAD
 
+=======
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
   const [showOtpInput, setShowOtpInput] = useState(false);
   const [otp, setOtp] = useState("");
   const [resendTimer, setResendTimer] = useState(59);
   const [canResend, setCanResend] = useState(false);
+<<<<<<< HEAD
   const [passwordMatchError, setPasswordMatchError] = useState("");
+=======
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +43,7 @@ const SignupForm: React.FC = () => {
   }, [resendTimer, canResend]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+<<<<<<< HEAD
     const { name, value } = e.target;
 
     // Update the formData
@@ -44,12 +57,16 @@ const SignupForm: React.FC = () => {
         setPasswordMatchError("");
       }
     }
+=======
+    setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
   };
 
   const handleOtpChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setOtp(e.target.value);
   };
 
+<<<<<<< HEAD
   // Handle OTP sending and ensure password match validation
   const handleSendOtp = async (e: React.FormEvent) => {
     e.preventDefault(); // Prevent form submission by default
@@ -62,11 +79,20 @@ const SignupForm: React.FC = () => {
 
     // Send OTP if passwords match
     await sendOtp(formData.email, navigate);
+=======
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
     setShowOtpInput(true);
     setResendTimer(59);
     setCanResend(false);
   };
 
+<<<<<<< HEAD
   const handleOtpSubmit = async () => {
     try {
       await signup(
@@ -80,6 +106,18 @@ const SignupForm: React.FC = () => {
       );
     } catch (error) {
       console.error("Signup Error:", error);
+=======
+  const handleOtpSubmit = () => {
+    alert("OTP Verified! Registration successful.");
+    navigate("/login");
+  };
+
+  const handleResendOtp = () => {
+    if (canResend) {
+      alert("OTP Resent!");
+      setResendTimer(59);
+      setCanResend(false);
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
     }
   };
 
@@ -92,6 +130,7 @@ const SignupForm: React.FC = () => {
         {!showOtpInput ? (
           <>
             <h2 className="auth-title">Create Your Account</h2>
+<<<<<<< HEAD
             <form onSubmit={handleSendOtp} className="auth-form">
               <input
                 type="text"
@@ -111,6 +150,9 @@ const SignupForm: React.FC = () => {
                 required
                 className="auth-input"
               />
+=======
+            <form onSubmit={handleSubmit} className="auth-form">
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
               <input
                 type="email"
                 name="email"
@@ -138,12 +180,16 @@ const SignupForm: React.FC = () => {
                 required
                 className="auth-input"
               />
+<<<<<<< HEAD
               {passwordMatchError && (
                 <p className="error-message">{passwordMatchError}</p>
               )}
               <button type="submit" className="auth-button">
                 Send OTP
               </button>
+=======
+              <button type="submit" className="auth-button">Sign Up</button>
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
             </form>
           </>
         ) : (
@@ -158,6 +204,7 @@ const SignupForm: React.FC = () => {
               required
               className="auth-input"
             />
+<<<<<<< HEAD
             <button onClick={handleOtpSubmit} className="auth-button">
               Verify OTP & Signup
             </button>
@@ -166,6 +213,12 @@ const SignupForm: React.FC = () => {
                 <button onClick={handleSendOtp} className="resend-button">
                   Resend OTP
                 </button>
+=======
+            <button onClick={handleOtpSubmit} className="auth-button">Verify OTP</button>
+            <p className="resend-otp">
+              {canResend ? (
+                <button onClick={handleResendOtp} className="resend-button">Resend OTP</button>
+>>>>>>> b36ebe12f86fc6045d5eb24411822b875c6b8de4
               ) : (
                 <>Resend OTP in {resendTimer} seconds</>
               )}
