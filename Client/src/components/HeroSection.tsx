@@ -1,6 +1,6 @@
 import React from "react";
 import { Carousel } from "react-bootstrap";
-import slide1 from "../assets/slide1.webp"; // Replace with your actual image paths
+import slide1 from "../assets/slide1.webp";
 import slide2 from "../assets/slide2.jpg";
 import slide3 from "../assets/slide3.avif";
 import slide4 from "../assets/slide4.webp";
@@ -11,7 +11,6 @@ const HeroSection = () => {
   return (
     <div className="hero-section">
       <Carousel fade>
-        {/* Health Wellness Slides */}
         <Carousel.Item>
           <img className="d-block w-100" src={slide1} alt="Health Wellness 1" />
           <Carousel.Caption>
@@ -28,7 +27,6 @@ const HeroSection = () => {
           </Carousel.Caption>
         </Carousel.Item>
 
-        {/* Wealth Wellness Slides */}
         <Carousel.Item>
           <img className="d-block w-100" src={slide3} alt="Wealth Wellness 1" />
           <Carousel.Caption>

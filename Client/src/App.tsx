@@ -31,13 +31,10 @@ const App: React.FC = () => {
           path="/dashboard"
           element={currentUser ? <Dashboard /> : <Navigate to="/login" />}
         />
-        <Route
-          path="/"
-          element={<Navigate to={currentUser ? "/dashboard" : "/login"} />}
-        />
       </Routes>
     </Router>
   );
 };
 
 export default App;
+//check 2

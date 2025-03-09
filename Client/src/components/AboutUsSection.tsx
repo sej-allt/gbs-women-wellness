@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import TabContent from "./TabContent"; // Import TabContent
-import aboutUsImage from "../assets/logo-placeholder.png"; // Import image (adjust path as necessary)
-import './AboutUsSection.css';
+import TabContent from "./TabContent";
+import aboutUsImage from "../assets/logo-placeholder.png"; // Replace with your About Us image
+import "./AboutUsSection.css";
 
 const AboutUsSection = () => {
   const [selectedTab, setSelectedTab] = useState("company");
@@ -13,7 +13,7 @@ const AboutUsSection = () => {
       </div>
       
       <div className="about-us-container">
-        {/* Left side: Text & Tabs */}
+        {/* Left side: Text, Tabs, and Learn More Button */}
         <div className="about-us-text">
           <div className="tabs">
             <span
@@ -36,7 +36,6 @@ const AboutUsSection = () => {
             </span>
           </div>
 
-          {/* Paragraph and Learn More Button */}
           <div className="tab-content">
             <TabContent selectedTab={selectedTab} />
             <button className="learn-more-btn">Learn More</button>
@@ -45,7 +44,7 @@ const AboutUsSection = () => {
 
         {/* Right side: Image */}
         <div className="about-us-image">
-          <img src={aboutUsImage} alt="About Us" /> {/* Use imported image */}
+          <img src={aboutUsImage} alt="About Us" />
         </div>
       </div>
     </section>

@@ -1,0 +1,69 @@
+.health-section {
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #f9f9f9, #ffffff); /* Subtle gradient background */
+    text-align: center;
+  }
+  
+  .health-header h2 {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: bold;
+    position: relative;
+    display: inline-block;
+  }
+  
+  .health-header h2::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -10px;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 3px;
+    background: #ff69b4;
+    border-radius: 2px;
+  }
+  
+  .health-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+  
+  .health-item {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .health-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .health-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid #ff69b4;
+    transition: transform 0.3s ease;
+  }
+  
+  .health-image:hover {
+    transform: scale(1.1);
+  }
+  
+  .health-text {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 0;
+    padding: 0 10px;
+  }
+  

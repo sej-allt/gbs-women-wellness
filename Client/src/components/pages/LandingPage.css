@@ -1,7 +1,8 @@
 .landing-page {
   font-family: Arial, sans-serif;
-  margin-top: 4rem; /* Adjust if navbar is fixed */
+  margin-top: 4rem; /* Adjust if needed */
 }
+
 
 .get-started-container {
   display: flex;
