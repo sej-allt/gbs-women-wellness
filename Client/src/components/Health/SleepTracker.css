@@ -1,0 +1,66 @@
+.sleep-container {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: white;
+  max-width: 450px;
+  margin: auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.sleep-container:hover {
+  transform: scale(1.03);
+}
+
+.sleep-mood-container {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.sleep-question {
+  margin: 15px 0;
+}
+
+.sleep-question p {
+  font-size: 18px;
+}
+
+.sleep-question button {
+  margin: 5px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.sleep-question button:hover {
+  opacity: 0.8;
+}
+
+.sleep-animation {
+  width: 80px;
+  height: 80px;
+  margin-top: 10px;
+}
+
+.manual-sleep-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.mark-sleep-btn {
+  background: green;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.mark-sleep-btn:hover {
+  opacity: 0.9;
+}

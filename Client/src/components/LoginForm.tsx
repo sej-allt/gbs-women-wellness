@@ -1,12 +1,15 @@
 // src/components/LoginForm.tsx
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/Auth.css";
 import logo from "../assets/logo-placeholder.png";
+import { login } from "../operations/services/authapis";
+import "../styles/Auth.css";
+import { useAppDispatch } from "../types/hooks";
 
 const LoginForm: React.FC = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
@@ -14,8 +17,8 @@ const LoginForm: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Add your login logic here; for now, navigate to dashboard
-    navigate("/dashboard");
+    dispatch(login(formData.email, formData.password , navigate))
+    navigate("/dash");
   };
 
   return (

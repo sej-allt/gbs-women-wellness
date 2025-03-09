@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../styles/Auth.css";
 import logo from "../assets/logo-placeholder.png";
+import { sendotp, signup } from "../operations/services/authapis";
+import "../styles/Auth.css";
+import { useAppDispatch } from "../types/hooks";
 
 const SignupForm: React.FC = () => {
   const [formData, setFormData] = useState({
+    name : "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -14,6 +17,7 @@ const SignupForm: React.FC = () => {
   const [resendTimer, setResendTimer] = useState(59);
   const [canResend, setCanResend] = useState(false);
   const navigate = useNavigate();
+  const dispatch= useAppDispatch();
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
@@ -39,13 +43,15 @@ const SignupForm: React.FC = () => {
       alert("Passwords do not match!");
       return;
     }
+    dispatch(sendotp(formData.email,navigate))
     setShowOtpInput(true);
     setResendTimer(59);
     setCanResend(false);
   };
 
   const handleOtpSubmit = () => {
-    alert("OTP Verified! Registration successful.");
+    // alert("OTP Verified! Registration successful.");
+    dispatch(signup(formData.name , formData.email , formData.password, formData.confirmPassword, otp, navigate))
     navigate("/login");
   };
 
@@ -67,6 +73,15 @@ const SignupForm: React.FC = () => {
           <>
             <h2 className="auth-title">Create Your Account</h2>
             <form onSubmit={handleSubmit} className="auth-form">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="auth-input"
+              />
               <input
                 type="email"
                 name="email"

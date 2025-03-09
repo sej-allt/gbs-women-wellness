@@ -1,0 +1,44 @@
+.progress-calendar {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    text-align: center;
+  }
+  
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    padding: 10px;
+    background: rgba(255, 248, 248, 0.8);
+    border-radius: 10px;
+  }
+  
+  .day {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    padding: auto;
+    background: #ccdee44d; /* Light background */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  
+  .progress-fill {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.5s ease-in-out;
+  }
+  
+  .date {
+    position: relative;
+    font-size: 10px;
+    font-weight:lighter;
+    color: #333;
+  }
+  

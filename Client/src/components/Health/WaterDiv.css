@@ -1,0 +1,225 @@
+.water-container {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  padding: 24px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  width: 350px;
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.water-container:hover {
+  transform: scale(1.03);
+}
+
+.water-container h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 12px;
+}
+
+/* Mood Icon Animations */
+.mood-container {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.mood {
+  font-size: 52px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sad {
+  color: #e74c3c;
+  animation: shake 0.3s infinite alternate;
+}
+
+.happy {
+  color: #f1c40f;
+  animation: bounce 0.5s infinite alternate;
+}
+
+.super-happy {
+  color: #2ecc71;
+  animation: float 0.8s infinite alternate;
+}
+
+
+
+/* Water Counter */
+.counter button {
+  background: rgba(255, 255, 255, 0.2); /* Subtle transparent */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Light border */
+  color: #000000; /* Elegant white text */
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px; /* Slightly rounded */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.counter button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1); /* Subtle zoom */
+}
+
+.counter button:active {
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0.95); /* Click feedback */
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+/* 
+button {
+  width: 40px;
+  height: 40px;
+  font-size: 22px;
+  border: none;
+  background: linear-gradient(135deg, #3498db, #2980b9);
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+button:hover {
+  background: linear-gradient(135deg, #2980b9, #1c638d);
+  transform: scale(1.1);
+} */
+
+.glass {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 14px;
+  transition: all 0.3s ease-in-out;
+}
+
+.water-icon {
+  font-size: 40px;
+  color: #3498db;
+}
+
+.glass span {
+  font-size: 16px;
+  font-weight: 700;
+  color: #222;
+  margin-top: 5px;
+}
+
+/* Goal Setter */
+.goal-setter {
+  margin-top: 15px;
+}
+
+.goal-setter label {
+  font-size: 15px;
+  font-weight: 600;
+  color: #222;
+}
+
+.goal-setter input {
+  width: 60px;
+  padding: 6px;
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.5);
+  font-size: 16px;
+  font-weight: bold;
+  color: #2c3e50;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.goal-setter input:focus {
+  outline: none;
+  transform: scale(1.05);
+}
+
+/* Hydration Calendar */
+.hydration-calendar {
+  margin-top: 20px;
+}
+
+.hydration-calendar h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.circle {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid #ddd;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.fill {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  transition: height 0.5s ease-in-out;
+  background: linear-gradient(135deg, #4fc3f7, #0097a7);
+  border-radius: 0 0 50% 50%;
+}
+
+.day span {
+  font-size: 14px;
+  font-weight: bold;
+  color: #222;
+  margin-top: 5px;
+}
+
+/* Animations */
+@keyframes bounce {
+  from { transform: translateY(0); }
+  to { transform: translateY(-5px); }
+}
+
+@keyframes shake {
+  from { transform: rotate(-5deg); }
+  to { transform: rotate(5deg); }
+}
+
+@keyframes float {
+  from { transform: translateY(0); }
+  to { transform: translateY(-8px); }
+}

@@ -1,0 +1,81 @@
+.dashboard {
+  position: relative;
+  padding: 20px;
+  min-height: 100vh;
+  background: url("D:/SC-GBS/Client/src/assets/sejal.png") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0; /* Ensure it's behind content */
+}
+.container-main{
+  width: 80%;
+}
+
+/* Blur effect only on the background */
+.dashboard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("D:/SC-GBS/Client/src/assets/sejal.png") no-repeat center center/cover; /* Set same background image */
+  filter: blur(10px); /* Apply blur effect */
+  z-index: -1; /* Keep it behind all content */
+}
+
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(6px); /* Smooth blurred effect */
+}
+
+/* Icons */
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+/* Trackers Container */
+.trackers-container {
+  display: flex;
+  gap: 20px;
+  /* align-items: stretch; */
+  flex-wrap: wrap;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+/* Common Style for Trackers */
+.water-container,
+.sleep-container {
+  flex: 1;
+  /* min-width: 300px; */
+  max-width: 35%;
+  background: rgba(255, 255, 255, 0.2); /* Transparent glass effect */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* Hover Effect */
+.water-container:hover,
+.sleep-container:hover {
+  transform: scale(1.03);
+}

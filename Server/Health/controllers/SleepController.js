@@ -53,7 +53,7 @@ export const markSleep = async (req, res) => {
   try {
     const { user, sleep, sleep_time, wake_time } = req.body;
     const user_id = user._id;
-
+    console.log("marksleep");
     if (!user_id) {
       return res
         .status(400)
@@ -102,6 +102,79 @@ export const markSleep = async (req, res) => {
 
     res.status(200).json({ success: true, data: updatedEntry });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export const getSleepSchedule = async (req, res) => {
+  try {
+    const { user } = req.body;
+    const user_id = user._id;
+
+    if (!user_id) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID is required",
+      });
+    }
+
+    // Fetch sleep data for the user
+    const sleepEntry = await Sleep.findOne({ user_id });
+
+    if (!sleepEntry) {
+      return res.status(404).json({
+        success: false,
+        message: "No sleep schedule found for this user.",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: "Sleep schedule fetched successfully!",
+      data: {
+        sleep_time: sleepEntry.sleep_time,
+        wake_time: sleepEntry.wake_time,
+      },
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
+  }
+};
+
+export const getSleepTrackData = async (req, res) => {
+  try {
+    const { user } = req.body;
+    console.log("I'm here", user);
+    const user_id = user._id;
+
+    if (!user_id) {
+      return res.status(400).json({
+        success: false,
+        message: "User ID is required",
+      });
+    }
+
+    // Fetch user's sleep tracking data
+    const sleepEntry = await Sleep.findOne({ user_id });
+
+    // If sleepEntry is null, set data as an empty array
+    const data = sleepEntry ? sleepEntry.track_data || [] : [];
+
+    res.status(200).json({
+      success: true,
+      message: "Sleep tracking data fetched successfully!",
+      data: data,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: "Server error",
+      error: error.message,
+    });
   }
 };

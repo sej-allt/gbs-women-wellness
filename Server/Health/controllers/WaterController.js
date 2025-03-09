@@ -42,3 +42,31 @@ export const trackWater = async (req, res) => {
       .json({ success: false, message: "Server error", error: error.message });
   }
 };
+
+export const getWaterTrack = async (req, res) => {
+  try {
+    const { user } = req.body;
+    console.log(req.body);
+    const user_id = user._id;
+
+    // Find the water intake record for the user
+    const waterEntry = await WaterIntake.findOne({ user_id });
+
+    if (!waterEntry) {
+      return res.status(404).json({
+        success: false,
+        message: "No water intake record found for this user.",
+      });
+    }
+    console.log(waterEntry.track_data);
+    res.status(200).json({
+      success: true,
+      message: "Water intake records fetched successfully!",
+      data: waterEntry.track_data,
+    });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ success: false, message: "Server error", error: error.message });
+  }
+};

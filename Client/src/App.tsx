@@ -1,52 +1,42 @@
-// src/App.tsx
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/DashboardHealth";
 import LoginForm from "./components/LoginForm";
 import SignupForm from "./components/SignupForm";
 import GoogleFitLogin from "./components/pages/GoogleFitLogin";
+import { RootState } from "./store"; // Import RootState type
 
-const App =  () => {
-  const [currentUser, setCurrentUser] = useState<any>(null);
+const App: React.FC = () => {
+  const logged_in = useSelector((state: RootState) => state.auth.logged_in);
 
-  useEffect(() => {
-    const user = localStorage.getItem("currentUser");
-    if (user) {
-      setCurrentUser(JSON.parse(user));
-    }
-  }, []);
-
-  const CLIENT_ID = "109171068082-8afa8tbvj5jboj5u3qtceeu2gals5n2p.apps.googleusercontent.com"
+  const CLIENT_ID = "109171068082-8afa8tbvj5jboj5u3qtceeu2gals5n2p.apps.googleusercontent.com";
 
   return (
-  <GoogleOAuthProvider clientId={CLIENT_ID}>
-    <div>
+    <GoogleOAuthProvider clientId={CLIENT_ID}>
       <Router>
         <Routes>
           <Route
             path="/login"
-            element={!currentUser ? <LoginForm /> : <Navigate to="/dashboard" />}
+            element={!logged_in ? <LoginForm /> : <Navigate to="/dash" />}
           />
           <Route
             path="/signup"
-            element={!currentUser ? <SignupForm /> : <Navigate to="/dashboard" />}
+            element={!logged_in ? <SignupForm /> : <Navigate to="/dash" />}
           />
           <Route
-            path="/dashboard"
-            element={currentUser ? <Dashboard /> : <Navigate to="/login" />}
+            path="/dash"
+            element={logged_in ? <Dashboard /> : <Navigate to="/login" />}
           />
-          <Route path="/gg" element={<GoogleFitLogin/>} />
+          <Route path="/gg" element={<GoogleFitLogin />} />
           <Route
             path="/"
-            element={<Navigate to={currentUser ? "/dashboard" : "/login"} />}
+            element={<Navigate to={logged_in ? "/dash" : "/login"} />}
           />
         </Routes>
       </Router>
-    </div>
-  </GoogleOAuthProvider>
-);
-
+    </GoogleOAuthProvider>
+  );
 };
 
 export default App;
