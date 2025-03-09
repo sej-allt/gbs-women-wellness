@@ -7,11 +7,11 @@
   --secondary: #427D9D;
   --tertiary: #9BBEC8;
   --light: #DDF2FD;
+  --pascal: #F4A300;
 }
 
 body {
   @apply bg-white text-gray-900;
-  background: rgba(0, 0, 0, 0.2);
 }
 
 .loading-dot {
