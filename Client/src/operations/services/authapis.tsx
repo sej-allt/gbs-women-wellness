@@ -3,7 +3,7 @@ import { setloggedin } from "../../slices/authSlice";
 import { apiConnector } from "../apiConnector";
 import { endpoints } from "../apis";
 
-const { LOGIN_API , SEND_OTP, SIGNUP_API} = endpoints;
+const { LOGIN_API , SEND_OTP, SIGNUP_API, SET_GOAL} = endpoints;
 
 export function login(
   email: string,
@@ -37,6 +37,7 @@ export function login(
       toast.error(error.response?.data?.message || "An error occurred");
       console.error(error);
     }
+    navigate('/login')
     toast.dismiss(toast_id);
   };
 }
@@ -98,15 +99,37 @@ export function login(
           console.error("Signup failed:", response.data?.message);
           throw new Error(response.data?.message || "Signup failed");
         }
-  
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        dispatch(setloggedin(true));
         toast.success("Signup Successful");
-        navigate("/dash");
+        navigate("/tell-us-more");
       } catch (error: any) {
         console.error("Error in signup:", error);
         toast.error(error.response?.data?.message || "Signup Failed");
-        navigate("/signup");
+        // navigate("/signup");
       } finally {
         toast.dismiss(toastId);
       }
     };
   }
+
+
+export function determineGoal(user: {}, result: string[]) {
+  return async (dispatch: (action: any) => void) => {
+    try {
+      console.log(user , result)
+      const response = await apiConnector("POST", SET_GOAL, { user, answers:result });
+
+      console.log("determineGoal response:", response);
+
+      if (!response.data?.success) {
+        throw new Error(response.data?.message || "Failed to determine goal");
+      }
+
+      return response; // Returning data if needed in the calling component
+    } catch (error: any) {
+      console.error("Error in determineGoal:", error);
+      toast.error(error.response?.data?.message || "Could not determine goal");
+    }
+  };
+}

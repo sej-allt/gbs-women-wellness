@@ -243,7 +243,7 @@ export const determineAndUpdateGoal = async (req, res) => {
     const { user, answers, age } = req.body;
 
     const userId = user._id;
-
+    console.log(user, answers);
     if (!userId || !answers || !Array.isArray(answers)) {
       return res.status(400).json({
         success: false,

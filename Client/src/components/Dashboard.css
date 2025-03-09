@@ -27,15 +27,21 @@
 
 
 /* Navbar */
-.navbar {
+.navbar_d{
   display: flex;
   justify-content: space-between;
+  color: rgba(163, 133, 133, 0.933);
   align-items: center;
   background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
-  padding: 15px 20px;
+  padding: 10px 30px;
+  padding-top: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(6px); /* Smooth blurred effect */
+}
+
+.name_d{
+  color:#2c3e50
 }
 
 /* Icons */

@@ -3,9 +3,11 @@ import { useSelector } from "react-redux";
 import { Navigate, Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import Dashboard from "./components/DashboardHealth";
 import LoginForm from "./components/LoginForm";
-import SignupForm from "./components/SignupForm";
 import GoogleFitLogin from "./components/pages/GoogleFitLogin";
-import { RootState } from "./store"; // Import RootState type
+import LandingPage from "./components/pages/LandingPage";
+import Quiz from "./components/Quiz";
+import SignupForm from "./components/SignupForm";
+import { RootState } from "./types/store"; // Import RootState type
 
 const App: React.FC = () => {
   const logged_in = useSelector((state: RootState) => state.auth.logged_in);
@@ -21,17 +23,25 @@ const App: React.FC = () => {
             element={!logged_in ? <LoginForm /> : <Navigate to="/dash" />}
           />
           <Route
+            path="/landing"
+            element={!logged_in ? <LandingPage /> : <Navigate to="/dash" />}
+          />
+          <Route
             path="/signup"
             element={!logged_in ? <SignupForm /> : <Navigate to="/dash" />}
           />
           <Route
             path="/dash"
-            element={logged_in ? <Dashboard /> : <Navigate to="/login" />}
+            element={logged_in ? <Dashboard /> : <Navigate to="/landing" />}
           />
           <Route path="/gg" element={<GoogleFitLogin />} />
           <Route
             path="/"
-            element={<Navigate to={logged_in ? "/dash" : "/login"} />}
+            element={<Navigate to={logged_in ? "/dash" : "/landing"} />}
+          />
+          <Route
+            path="/tell-us-more"
+            element={logged_in ? <Quiz/> : <Navigate to="/landing" />}
           />
         </Routes>
       </Router>
@@ -40,3 +50,4 @@ const App: React.FC = () => {
 };
 
 export default App;
+//check 2

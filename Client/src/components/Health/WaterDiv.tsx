@@ -90,7 +90,7 @@ const loadWaterData = async () => {
    <button onClick={increaseWater}>+</button>
  </div>
 
-      <ProgressCalendar data={waterData} goal={goal} color="#85c7de4d" title="Water Intake" />
+      <ProgressCalendar data={waterData} goal={goal} color="#A5E2E0" title="Water Intake" />
     </div>
   );
 };

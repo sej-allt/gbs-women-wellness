@@ -21,8 +21,8 @@ const Dashboard = () => {
       
       {/* Navbar */}
       <div className="container-main">
-      <nav className="navbar">
-        <h2>Hi, {userName} 👋</h2>
+      <nav className="navbar_d">
+        <h2 className="name_d">Hi, {userName} 👋</h2>
         <div className="icons">
           <FaBell className="icon" />
           <FaUser className="icon" />

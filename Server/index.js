@@ -7,11 +7,14 @@ import calendarRoutes from "./Health/routes/Calendar.js";
 import fitRoutes from "./Health/routes/Fitness.js";
 import connect from "./config/database.js";
 import { sendWhatsAppMessage } from "./utils/whatsapp_sender.js";
-dotenv.config({
-  path: "./.env",
-});
+
+// Load environment variables
+dotenv.config({ path: "./.env" });
+
 const app = express();
-//for form data
+const PORT = process.env.PORT || 4000;
+
+// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(
@@ -20,7 +23,6 @@ app.use(
     credentials: true,
   })
 );
-const PORT = process.env.PORT || 4000;
 
 connect();
 

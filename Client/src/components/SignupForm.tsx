@@ -16,6 +16,7 @@ const SignupForm: React.FC = () => {
   const [otp, setOtp] = useState("");
   const [resendTimer, setResendTimer] = useState(59);
   const [canResend, setCanResend] = useState(false);
+  const [passwordMatchError, setPasswordMatchError] = useState("");
   const navigate = useNavigate();
   const dispatch= useAppDispatch();
 

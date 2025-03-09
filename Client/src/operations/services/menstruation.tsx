@@ -25,7 +25,7 @@ export function fetchMenstruationCycleDetails(user: User) {
       return response.data;
     } catch (error: any) {
       console.error("Error in fetchMenstruationCycleDetails:", error);
-      toast.error(error.response?.data?.message || "Could not fetch cycle data");
+    //   toast.error(error.response?.data?.message || "Could not fetch cycle data");
     }
   };
 }

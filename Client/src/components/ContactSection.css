@@ -1,0 +1,27 @@
+.contact-section {
+    background-color: #ffb6c1; /* Pastel pink background */
+    color: #fff; /* White text */
+    padding: 60px 20px;
+  }
+  
+  .contact-container {
+    max-width: 800px;
+    margin: 0; /* Remove auto centering */
+    text-align: left;
+    padding-left: 20px; /* Optional: add a bit of left padding if needed */
+  }
+  
+  .contact-container h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .contact-details {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 0;
+  }
+  

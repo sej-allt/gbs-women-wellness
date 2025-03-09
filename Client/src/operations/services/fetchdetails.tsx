@@ -18,7 +18,7 @@ export function fetchWaterTrackDetails(user: {}) {
       return response.data; // Returning data if needed in the calling component
     } catch (error: any) {
       console.error("Error in fetchWaterTrackDetails:", error);
-      toast.error(error.response?.data?.message || "Could not fetch water intake data");
+    //   toast.error(error.response?.data?.message || "Could not fetch water intake data");
     } finally {
     }
   };
@@ -71,7 +71,7 @@ export function getSleepSchedule(user: {}) {
         return response.data; // Returning data if needed in the calling component
       } catch (error: any) {
         console.error("Error in getSleepSchedule:", error);
-        toast.error(error.response?.data?.message || "Could not fetch sleep schedule");
+        // toast.error(error.response?.data?.message || "Could not fetch sleep schedule");
       }
     };
   }
@@ -150,7 +150,7 @@ export function getSleepData(user: {}) {
       return response.data.data; // Returning data if needed in the calling component
     } catch (error: any) {
       console.error("Error in getSleepData:", error);
-      toast.error(error.response?.data?.message || "Could not fetch sleep data");
+    //   toast.error(error.response?.data?.message || "Could not fetch sleep data");
     }
   };
 }

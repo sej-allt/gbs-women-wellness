@@ -16,5 +16,6 @@ export const endpoints = {
     GET_MENSTRUAL_CYCLE : BASE_URL + "fit/getmens",
     ADD_VIDEO : BASE_URL + "auth/addvideo",
     GET_ALL_VIDEOS: BASE_URL + "auth/getvideos",
-     MARK_VIDEO_COMPLETED :BASE_URL + "auth/markcomplete"
+     MARK_VIDEO_COMPLETED :BASE_URL + "auth/markcomplete",
+     SET_GOAL : BASE_URL + "auth/setgoal"
 }
